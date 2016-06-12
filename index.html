@@ -1,0 +1,148 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="./css/marge.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div class="row no-gutter">
+  <div class="col-md-4 original">
+    <h2><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;Original</h2>
+
+    <p class="mail-body">
+      <span style="font-weight:bold">メール本文です</span>
+      <br>お世話になります。
+      <br>下記ご連絡ありがとうございます。
+      <br>ページ表示時のサイドパネル展開は
+      <br>どのようにすればよいでしょうか？
+      <br>
+    </p>
+  </div>
+
+  <div class="col-md-4 recommend">
+    <h2><i class="fa fa-file-text" aria-hidden="true"></i> &nbsp;Recommend</h2>
+
+        <div id="suggested_mail">
+          <ul data-bind="foreach:mail_sentence_array">
+            <div data-bind="css:line_class">
+              <span class="line_num" data-bind="text:line_num"></span> &ensp;
+              <span class="line_message" data-bind="text:line_context"></span>
+            </div>
+          </ul>
+        </div>
+  </div>
+
+  <div class="col-md-4 answer">
+    <h2><i class="fa fa-paper-plane" aria-hidden="true"></i> &nbsp;Answer</h2>
+
+    <textarea class="editor">ここに作成されたメール本文が表示されます</textarea>
+    <a id="ok" href="#" class="editor_ok">Edit</a>
+  </div>
+</div>
+
+<div class="chat chat-wrapper is-hide">
+  <a href="#" class="chat-toggle">
+    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+  </a>
+  <div class="direct-chat-primary">
+    <h2><i class="fa fa-comments" aria-hidden="true"></i>&nbsp;Need Help?</h2>
+
+    <div class="direct-chat-messages">
+      <div id="conversation_container">
+        <div data-bind="foreach:message_array">
+          <!-- ko if: name == "AI" -->
+            <div class="direct-chat-msg">
+              <div class="direct-chat-info clearfix">
+                <span class="chat_sender_name" data-bind="text:name"></span>
+              </div>
+              <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+              <div class="direct-chat-text" data-bind="text:message"></div>
+            </div>
+          <!-- /ko -->
+          <!-- ko if: name != "AI" -->
+            <div class="direct-chat-msg right">
+              <div class="direct-chat-info clearfix">
+                <span class="chat_sender_name" data-bind="text:name"></span>
+              </div>
+              <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+              <div class="direct-chat-text" data-bind="text:message"></div>
+            </div>
+          <!-- /ko -->
+        </div>
+      </div>
+
+    </div>
+    <!--/.direct-chat-messages-->
+  </div>
+</div>
+<!-- /.chat-wrapper -->
+
+
+
+
+<div id="container_main">
+
+  <div id="mail">
+
+   	<div id="mail_container">
+  	  	<div id="original_mail">
+  	  		<span data-bind = "text:title"></span>
+  	  	</div>
+  	</div>
+
+  	<div id="extracted_sentences">
+  	</div>
+  </div>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/knockout.js"></script>
+<script src="./js/mailDraft.js"></script>
+<script src="./js/reserved_keyword.js"></script>
+<script src="./js/mail_suggest_vm.js"></script>
+<script src="./js/mail_suggest_ctrl.js"></script>
+<script src="./js/show_conversation_vm.js"></script>
+<script src="./js/show_conversation_ctrl.js"></script>
+
+<script src="./js/watson_interface.js"></script>
+<script src="./js/app_mgr.js"></script>
+<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="dist/js/app.js"></script>
+<script type="text/javascript" src="js/answer.js"></script>
+<script type="text/javascript" src="js/original.js"></script>
+<script type="text/javascript" src="js/chat.js"></script>
+
+<script type="text/javascript">
+  var answer = new Answer('.answer');
+  var original = new Original('.original');
+
+  answer.mode(0);
+
+  $('#ok').on('click', function(){
+    answer.mode(1);
+  });
+
+  var chat = new Chat('.chat');
+  $(".chat-toggle").on("click", function(e){
+    e.preventDefault();
+    if (chat.isShow()) {
+      chat.hide();
+    } else {
+      chat.show();
+    }
+  });
+
+  setTimeout(function(){
+    chat.show();
+  }, 1000);
+</script>
+
+
+</body>
+</html>
+

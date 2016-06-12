@@ -1,0 +1,74 @@
+
+<meta charset="utf-8">
+
+<script src="./../js/mail_suggest_ctrl.js"></script>
+<script src="./../js/mail_suggest_vm.js"></script>
+<script src="./../js/reserved_keyword.js"></script>
+<link rel="stylesheet" type="text/css" href="./../css/marge.css">
+
+
+ <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+
+
+<div id="container_main">
+<div id="mail">
+	<div id="suggested_mail">
+		<ul data-bind="foreach:mail_sentence_array">
+			<div data-bind="css:line_class">
+				<span class="line_num" data-bind="text:line_num"></span> &ensp;
+				<span class="line_message" data-bind="text:line_context"></span>
+			</div>
+		</ul>
+	</div>
+</div>
+</div>
+
+<script>
+
+var test_mailcandidate_array =
+		[
+			{title: ["aaa"], body:["aaa \nbbb \nccc\nddd \neee \nfff"]},
+			{title: ["bbb"], body:["dddn \neeen \nffn"]},
+			{title: ["ccc"], body:["ggg\n hhh \n iii/n"]}
+		];
+	
+	mail_suggest_ctr = new MailSuggestCtrl();
+	mail_suggest_ctr.initialize();
+	mail_suggest_ctr.set_mail_candidate(test_mailcandidate_array);
+
+function next_test(){
+
+	var result = mail_suggest_ctr.next();
+
+}
+
+function become_select(){
+	mail_suggest_ctr.become_select_status();
+}
+
+
+function set_start(){
+	mail_suggest_ctr.set_start("二行目");
+}
+
+
+function set_last(){
+	mail_suggest_ctr.set_last("三行目");
+}
+
+
+function extract_selected_sentences(){
+	var extracted_sentence_array = mail_suggest_ctr.extract_selected_sentences();
+	console.log(extracted_sentence_array);
+}
+
+
+</script>
+
+
+<input type="button" onclick="next_test()" value="next_test">
+<input type="button" onclick="become_select()" value="become_select">
+<input type="button" onclick="set_start()" value="set_start">
+<input type="button" onclick="set_last()" value="set_last">
+<input type="button" onclick="extract_selected_sentences()" value="extract_selected_sentences">

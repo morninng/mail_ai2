@@ -1,0 +1,23 @@
+#suggested_mail{
+	background-color:#F0FFF0;
+
+	.line_num{
+		color:black;
+	}
+
+	.default{
+		.line_message{
+			color:blue;
+		}
+	}
+	.selected{
+		.line_message{
+			color:red;
+			background-color:yellow;
+			padding:0px;
+			margin-top:3px;
+			margin-bottom:3px;
+		}
+	}
+
+}

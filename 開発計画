@@ -1,0 +1,69 @@
+app.js
+■status管理
+  - initialize
+  - mail_suggestion
+  - row_selection
+  - next_or_findother
+  - template_selection
+  - complete
+
+■予約語
+◆mail_suggestion
+  　既存のリストから次の候補を探すための言葉
+    他　次　別　違う
+    
+ 　  別の言語で再検索するための言葉
+ 　  。。に関するものない？
+ 　  ..とかについて知りたいんだけど
+ 　  。。について検索して
+ 　  
+ 　  表示中の提案文を用い、次のStatusに遷移するための言葉
+ 　  　それでいいよ
+ 　  　これでいこう
+ 　  　よしこれでいこう
+ 　  
+◆row_selection SET
+　　　xx行から
+　　　XX行まで　　　
+ - row selection adjust
+   xx行上
+   xx行下
+
+ 次のStatusに遷移するための言葉
+ 　  　それでいいよ
+ 　  　これでいこう
+ 　  　よしこれでいこう
+
+
+ - next_or_findother
+ 
+ 別の文面について探す場合
+ 　　XXについても探してみようか
+ 　　XXについても情報追加したい
+ 
+ 　 次のStatusに遷移するための言葉
+ 　  　それでいいよ
+ 　  　これでいこう
+ 　  　よしこれでいこう
+ 　  　 もうこれでいいよ
+ 　  　 
+ 
+ 
+  -template_selection
+   堅い感じの
+   顧客向け
+   社内用
+   謝罪のため
+
+
+　 次のStatusに遷移するための言葉
+ 　  　それでいいよ
+ 　  　これでいこう
+ 　  　よしこれでいこう
+ 　  　 もうこれでいいよ
+ 　  
+ AppMgr
+ 　
+ 　  
+ 　  
+ 　  
